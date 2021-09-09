@@ -4,7 +4,7 @@
 1. Вставить ваш токен проекта в `src/main/resources/application.yml`
 2. Запустить файл TemplateBot.kt
 
-![Run Kotlin File](./static/Run Kotlin File.png)
+![Run Kotlin File](https://github.com/Denire/jaicf-template-for-jaicp-developers/raw/master/static/Run%20Kotlin%20File.png)
 
 ## Подключение
 
