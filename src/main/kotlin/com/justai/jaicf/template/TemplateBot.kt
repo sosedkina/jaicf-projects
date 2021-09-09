@@ -2,30 +2,28 @@ package com.justai.jaicf.template
 
 import com.justai.jaicf.BotEngine
 import com.justai.jaicf.activator.caila.CailaIntentActivator
-import com.justai.jaicf.activator.caila.CailaNLUSettings
 import com.justai.jaicf.activator.regex.RegexActivator
+import com.justai.jaicf.channel.jaicp.channels.ChatApiChannel
+import com.justai.jaicf.channel.jaicp.channels.ChatWidgetChannel
+import com.justai.jaicf.channel.jaicp.channels.TelephonyChannel
 import com.justai.jaicf.channel.jaicp.logging.JaicpConversationLogger
 import com.justai.jaicf.logging.Slf4jConversationLogger
-import com.justai.jaicf.template.scenario.mainScenario
-import java.util.*
-
-val accessToken: String = System.getenv("JAICP_API_TOKEN") ?: Properties().run {
-    load(CailaNLUSettings::class.java.getResourceAsStream("/jaicp.properties"))
-    getProperty("apiToken")
-}
-
-private val cailaNLUSettings = CailaNLUSettings(
-    accessToken = accessToken
-)
+import com.justai.jaicf.template.configuration.Configuration
+import com.justai.jaicf.template.extensions.run
+import com.justai.jaicf.template.scenario.MainScenario
 
 val templateBot = BotEngine(
-    scenario = mainScenario,
+    scenario = MainScenario,
     conversationLoggers = arrayOf(
-        JaicpConversationLogger(accessToken),
+        JaicpConversationLogger(Configuration.connection.accessToken),
         Slf4jConversationLogger()
     ),
     activators = arrayOf(
-        CailaIntentActivator.Factory(cailaNLUSettings),
+        CailaIntentActivator.Factory(Configuration.caila),
         RegexActivator
     )
 )
+
+fun main() {
+    templateBot.run(ChatWidgetChannel, ChatApiChannel, TelephonyChannel)
+}

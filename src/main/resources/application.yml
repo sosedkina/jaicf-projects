@@ -1,0 +1,9 @@
+caila:
+  accessToken: ${JAICP_API_TOKEN}
+
+connection:
+  mode: webhook
+  accessToken: ${JAICP_API_TOKEN}
+
+bot:
+  onErrorReply: "Извините, у нас все сломалось"

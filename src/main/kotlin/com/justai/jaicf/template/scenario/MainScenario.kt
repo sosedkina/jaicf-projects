@@ -2,8 +2,21 @@ package com.justai.jaicf.template.scenario
 
 import com.justai.jaicf.activator.caila.caila
 import com.justai.jaicf.builder.Scenario
+import com.justai.jaicf.hook.AnyErrorHook
+import com.justai.jaicf.reactions.buttons
+import com.justai.jaicf.reactions.toState
+import com.justai.jaicf.template.configuration.Configuration
+import io.ktor.util.*
 
-val mainScenario = Scenario {
+val MainScenario = Scenario {
+
+    append(ExampleBitcoinScenario)
+
+    handle<AnyErrorHook> {
+        reactions.say(Configuration.bot.onErrorReply)
+        logger.error(exception)
+    }
+
     state("start") {
         activators {
             regex("/start")
@@ -17,9 +30,7 @@ val mainScenario = Scenario {
                     "Hi there! How can I help you?"
                 )
                 buttons(
-                    "Help me!",
-                    "How are you?",
-                    "What is your name?"
+                    "Bitcoin price" toState "/getBitcoinPrice"
                 )
             }
         }

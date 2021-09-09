@@ -9,10 +9,14 @@ version = "1.0.0"
 
 val jaicf = "1.1.3"
 val logback = "1.2.3"
+val hoplite = "1.4.7"
+val jackson = "2.12.3"
+val ktor = "1.5.1"
+val junit = "5.7.2"
 
 // Main class to run application on heroku. Either JaicpPollerKt, or JaicpServerKt. Will propagate to .jar main class.
 application {
-    mainClassName = "com.justai.jaicf.template.connections.JaicpServerKt"
+    mainClassName = "com.justai.jaicf.template.TemplateBotKt"
 }
 
 repositories {
@@ -30,6 +34,15 @@ dependencies {
     implementation("com.just-ai.jaicf:core:$jaicf")
     implementation("com.just-ai.jaicf:jaicp:$jaicf")
     implementation("com.just-ai.jaicf:caila:$jaicf")
+
+    implementation("com.sksamuel.hoplite:hoplite-core:$hoplite")
+    implementation("com.sksamuel.hoplite:hoplite-yaml:$hoplite")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jackson")
+    implementation("io.ktor:ktor-client-jackson:$ktor")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junit")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit")
 }
 
 tasks {
@@ -38,6 +51,9 @@ tasks {
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
+    }
+    test {
+        useJUnitPlatform()
     }
 }
 

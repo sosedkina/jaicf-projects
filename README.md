@@ -1,27 +1,63 @@
-# JAICF Caila Bot template
+# Шаблон для разработки навыков на JAICF
 
-Here is a ready to use [JAICF](https://github.com/just-ai/jaicf-kotlin) bot template that can be ran locally or deployed to JAICP Cloud or Heroku server.
 
-# How to use
 
-Please refer to the detailed [Quick Start](https://github.com/just-ai/jaicf-kotlin/wiki/Quick-Start) that shows how to use this template with [JAICP](https://github.com/just-ai/jaicf-kotlin/tree/master/channels/jaicp) and [CAILA NLU](https://github.com/just-ai/jaicf-kotlin/tree/master/activators/caila) services.
+## Подключение
+В шаблоне предусмотрены варианты подключения через webhook или polling-соединения.
+* `polling` - тип соединения, когда наш бот сам обращается к серверам JustAI для получения новых запросов. 
+  Этот тип подключения проще и рекомендуется для локальной разработки.
+  Пример запуска:
+    1. Установить `connection.mode: polling` в файле `application-local.yml`
+    ```yaml
+      connection:
+        mode: polling
+    ```
+    2. Запустить приложение
+       ```kotlin
+          fun main() {
+              templateBot.run(ChatWidgetChannel, ChatApiChannel, TelephonyChannel)
+          }
+       ```
+  
+* `webhook` - тип соединения, когда сервера JustAI ходят на наше приложение через внешний URL. 
+  В этом случае мы должны обеспечить доступность приложения по внешнему адресу, например, с помощью утилиты ngrok.
+  
+  Пример запуска:
+  1. Установить `connection.mode: webhook` в файле `application-local.yml`
+    ```yaml
+      connection:
+        mode: webhook
+    ```
+  2. Запустить приложение
+     ```kotlin
+        fun main() {
+            templateBot.run(ChatWidgetChannel, ChatApiChannel, TelephonyChannel)
+        }
+     ```
+  3. Получить внешний адрес через ngrok, скопировать его.
+    ```shell
+    $ ngrok http 8080
+    ```
+  4. Поставить тип соединения `webhook`  в настройках  JAICF проекта в админке, указать скопированный URL.
 
-# Deploy to [JAICP Cloud](https://github.com/just-ai/jaicf-kotlin/wiki/JAICP-Cloud)
+    
 
-JAICP Cloud provides one-click deploy for your bot, just click on the button below
+Для локальной разработки (для запуска бота на своём копмьютере) рекомендуется использовать polling-соединение.
 
-[![Deploy](https://just-ai.com/img/deploy-to-jaicp.svg)](https://app.jaicp.com/deploy)
+## Конфигурирование
 
-After deployment just add one or more channels on the _Channels_ page accordingly to your `JaicpServer.kt` configuration.
 
-# Deploy to [Heroku](https://github.com/just-ai/jaicf-kotlin/wiki/Heroku)
+## Работа с JSON
+В шаблоне подключены две библиотеки для работы с JSON:
+* Jackson
+* Kotlinx Serialization
 
-If you would like to deploy this project to the Heroku cloud, just click on the button below
+Они доступны из любого места в приложении и решают задачи приведения обьекта в строковый вид и обратно.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+### Сериализация и десериализация
+Зачастую появляется необходимость 
 
-1. After deployment open the app and copy the URL of the app to clipboard.
-2. Then go to JAICP Web Interface, open your project's settings, select _webhook type_ of connection and paste your URL.
-3. That's it! Now all the channels will communicate through your bot deployed to Heroku.
+## Работа с HTTP
 
-> You can switch project back to long polling instead of webhook once you need to route all messages to your local machine during development.
+## Деплой в облако
+

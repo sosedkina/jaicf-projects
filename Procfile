@@ -1,1 +1,1 @@
-web: java -jar build/libs/jaicf-jaicp-caila-template-1.0.0-all.jar
+web: java -jar build/libs/jaicf-template-for-linguists-1.0.0-all.jar

@@ -1,0 +1,7 @@
+caila:
+  accessToken: your api token
+  confidenceThreshold: 0.4
+
+connections:
+  mode: polling
+  accessToken: your api token
