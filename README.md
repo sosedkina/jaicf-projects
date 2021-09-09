@@ -1,12 +1,13 @@
 # Шаблон для разработки навыков на JAICF для разработчиков JAICP
 
 ## Запуск в два клика:
+
 1. Вставить ваш токен проекта в `src/main/resources/application.yml`
 2. Запустить файл TemplateBot.kt
 
 ![Run Kotlin File](https://github.com/Denire/jaicf-template-for-jaicp-developers/raw/master/static/Run%20Kotlin%20File.png)
 
-## Структура проекта 
+## Структура проекта
 
 ```
 src
@@ -35,6 +36,49 @@ src
 └── test
     └── kotlin
         └── MainScenarioTest.kt // Пример тесты
+```
+
+## Файлы для сборки через gradle
+
+Файл сборки называется build.gradle.kts, он лежит в корне проекта
+
+```kotlin
+plugins {
+    // подключение плагинов. 
+}
+
+group = "com.justai.jaicf"
+version = "1.0.0"
+
+val jaicf = "1.1.3" // версия библиотеки JAICF
+
+// Main class to run application on heroku. Either JaicpPollerKt, or JaicpServerKt. Will propagate to .jar main class.
+application {
+    mainClassName =
+        "com.justai.jaicf.template.TemplateBotKt" // имя класса, с которым будет запускаться исполняемый .jar файл
+}
+
+repositories {
+    // список репозиториев, с которых будут выкачиваться зависимости. Обычно не меняется.
+}
+
+dependencies {
+    // список зависимостей, используемых в проекте. 
+    // Вы можете находить нужные вам зависимости в интернете и добавлять их сюда, чтобы использовать в проекте.
+}
+
+tasks {
+    // список задач. В том числе задачи для тестирования
+}
+
+tasks.create("stage") {
+    dependsOn("shadowJar") // задача для сборки проекта для Heroku
+}
+
+tasks.withType<com.justai.jaicf.plugins.jaicp.build.JaicpBuild> {
+    mainClassName.set(application.mainClassName) // установка имени класса для деплоя в JAICP Cloud
+}
+
 ```
 
 ## Подключение
