@@ -6,6 +6,37 @@
 
 ![Run Kotlin File](https://github.com/Denire/jaicf-template-for-jaicp-developers/raw/master/static/Run%20Kotlin%20File.png)
 
+## Структура проекта 
+
+```
+src
+├── main
+│   ├── kotlin
+│   │   └── com
+│   │       └── justai
+│   │           └── jaicf
+│   │               └── template
+│   │                   ├── TemplateBot.kt // файл с запуском бота
+│   │                   ├── configuration 
+│   │                   │   └── MainConfiguration.kt // файл с kotlin-конфигурациями
+│   │                   ├── extensions
+│   │                   │   └── BotEngineRunners.kt // утилитарные расширеня для удобного запуска
+│   │                   ├── http
+│   │                   │   └── Http.kt // настроенный HttpClent
+│   │                   ├── scenario
+│   │                   │   ├── ExampleBitcoinScenario.kt // пример сценария с внешней интеграцией
+│   │                   │   └── MainScenario.kt // пример сценария
+│   │                   └── serializers
+│   │                       ├── Jackson.kt // Jackson-серилазатор для работы с JSON
+│   │                       └── Kotlinx.kt // KotlinX-сериализатор для работы с JSON
+│   └── resources
+│       ├── application-local.example.yml // пример локальной конфигурации проекта
+│       └── application.yml // конфигурация проекта
+└── test
+    └── kotlin
+        └── MainScenarioTest.kt // Пример тесты
+```
+
 ## Подключение
 
 В шаблоне предусмотрены варианты подключения через webhook или polling-соединения.
