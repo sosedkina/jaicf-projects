@@ -1,5 +1,11 @@
 # Шаблон для разработки навыков на JAICF для разработчиков JAICP
 
+## Запуск в два клика:
+1. Вставить ваш токен проекта в `src/main/resources/application.yml`
+2. Запустить файл TemplateBot.kt
+
+![Run Kotlin File](./static/Run Kotlin File.png)
+
 ## Подключение
 
 В шаблоне предусмотрены варианты подключения через webhook или polling-соединения.
@@ -10,6 +16,7 @@
     ```yaml
       connection:
         mode: polling
+        accessToken: <Your Access Token from JAICP Application Console>
     ```
     2. Запустить приложение
        ```kotlin
