@@ -11,6 +11,7 @@ import io.ktor.util.*
 val MainScenario = Scenario {
 
     append(ExampleBitcoinScenario)
+    append(MyKozaScenario)
 
     handle<AnyErrorHook> {
         reactions.say(Configuration.bot.onErrorReply)

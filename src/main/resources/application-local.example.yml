@@ -1,3 +1,5 @@
+# You can create your own application-local.yml file from this example
+
 caila:
   accessToken: your api token
   confidenceThreshold: 0.4
