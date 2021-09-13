@@ -24,3 +24,4 @@ val httpClient = HttpClient(CIO) {
         serializer = JacksonSerializer(Jackson.mapper)
     }
 }
+

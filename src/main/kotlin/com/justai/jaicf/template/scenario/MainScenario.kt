@@ -2,36 +2,58 @@ package com.justai.jaicf.template.scenario
 
 import com.justai.jaicf.activator.caila.caila
 import com.justai.jaicf.builder.Scenario
+import com.justai.jaicf.channel.jaicp.channels.TelephonyEvents
+import com.justai.jaicf.channel.jaicp.dto.jaicpAnalytics
+import com.justai.jaicf.channel.jaicp.reactions.chatwidget
+import com.justai.jaicf.channel.jaicp.reactions.telephony
+import com.justai.jaicf.channel.jaicp.telephony
+import com.justai.jaicf.helpers.logging.logger
 import com.justai.jaicf.hook.AnyErrorHook
-import com.justai.jaicf.reactions.buttons
-import com.justai.jaicf.reactions.toState
 import com.justai.jaicf.template.configuration.Configuration
 import io.ktor.util.*
 
-val MainScenario = Scenario {
-
-    append(ExampleBitcoinScenario)
-
+val TelephonyScenario = Scenario {
     handle<AnyErrorHook> {
         reactions.say(Configuration.bot.onErrorReply)
         logger.error(exception)
     }
 
+    state("ringing") {
+        activators {
+            event(TelephonyEvents.RINGING)
+        }
+        action(telephony) {
+            logger.debug("Incoming call from ${request.caller}")
+        }
+    }
+
     state("start") {
         activators {
             regex("/start")
-            intent("Hello")
         }
         action {
-            reactions.run {
-                image("https://media.giphy.com/media/ICOgUNjpvO0PC/source.gif")
-                sayRandom(
-                    "Hello! How can I help?",
-                    "Hi there! How can I help you?"
-                )
-                buttons(
-                    "Bitcoin price" toState "/getBitcoinPrice"
-                )
+            val answer = "Hello! Thanks for calling My Example Service. How can I help you?"
+            reactions.telephony?.say(answer, bargeIn = true)
+            reactions.chatwidget?.say(answer)
+        }
+    }
+
+    state("AskForLoan") {
+        activators {
+            intent("AskForLoan")
+        }
+        action {
+            reactions.say("How much money do you need?")
+        }
+        
+        state("LoanAmount") {
+            activators {
+                intent("LoanAmount")
+            }
+            action(caila) {
+                val amount = activator.slots["amount"] as String
+                reactions.say("Okay! I will lend you $amount dollars.")
+                jaicpAnalytics.setSessionResult("")
             }
         }
     }
@@ -42,11 +64,7 @@ val MainScenario = Scenario {
         }
 
         action {
-            reactions.sayRandom(
-                "See you soon!",
-                "Bye-bye!"
-            )
-            reactions.image("https://media.giphy.com/media/EE185t7OeMbTy/source.gif")
+            reactions.say("Ok!")
         }
     }
 

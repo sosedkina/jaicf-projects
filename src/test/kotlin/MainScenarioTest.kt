@@ -1,8 +1,8 @@
-import com.justai.jaicf.template.scenario.MainScenario
+import com.justai.jaicf.template.scenario.TelephonyScenario
 import com.justai.jaicf.test.ScenarioTest
 import org.junit.jupiter.api.Test
 
-class MainScenarioTest : ScenarioTest(MainScenario) {
+class MainScenarioTest : ScenarioTest(TelephonyScenario) {
 
     @Test
     fun `should activate by query`(){
