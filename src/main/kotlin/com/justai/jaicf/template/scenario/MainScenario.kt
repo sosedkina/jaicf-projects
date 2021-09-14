@@ -13,6 +13,7 @@ import com.justai.jaicf.template.configuration.Configuration
 import io.ktor.util.*
 
 val TelephonyScenario = Scenario {
+
     handle<AnyErrorHook> {
         reactions.say(Configuration.bot.onErrorReply)
         logger.error(exception)
@@ -54,6 +55,7 @@ val TelephonyScenario = Scenario {
                 val amount = activator.slots["amount"] as String
                 reactions.say("Okay! I will lend you $amount dollars.")
                 jaicpAnalytics.setSessionResult("")
+//                jaicpAnalytics.setMessageLabel("")
             }
         }
     }
@@ -62,7 +64,15 @@ val TelephonyScenario = Scenario {
         activators {
             intent("Bye")
         }
+        action {
+            reactions.say("Ok!")
+        }
+    }
 
+    state("later") {
+        activators {
+            intent("CallMeLater")
+        }
         action {
             reactions.say("Ok!")
         }
