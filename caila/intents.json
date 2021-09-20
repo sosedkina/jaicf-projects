@@ -1,0 +1,177 @@
+[
+  {
+    "id": 2555149,
+    "path": "/AskForLoan",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "I need a loan"
+      },
+      {
+        "text": "i need to borrow some money"
+      },
+      {
+        "text": "i want to borrow money"
+      },
+      {
+        "text": "give me loan"
+      },
+      {
+        "text": "loan"
+      }
+    ],
+    "patterns": [],
+    "slots": [
+      {
+        "name": "amount",
+        "entity": "amount",
+        "required": true,
+        "prompts": [
+          "How much money do you need?"
+        ]
+      }
+    ],
+    "priority": 0
+  },
+  {
+    "id": 2555148,
+    "path": "/Bye",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "goodbye"
+      },
+      {
+        "text": "bye"
+      },
+      {
+        "text": "see you"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  },
+  {
+    "id": 2555147,
+    "path": "/Hello",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "hi"
+      },
+      {
+        "text": "hello"
+      },
+      {
+        "text": "welcome"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  },
+  {
+    "id": 2555152,
+    "path": "/INeedAHuman",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "operator"
+      },
+      {
+        "text": "call a human"
+      },
+      {
+        "text": "give me a human"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  },
+  {
+    "id": 2555563,
+    "path": "/No",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "nope"
+      },
+      {
+        "text": "no"
+      },
+      {
+        "text": "nothing"
+      },
+      {
+        "text": "no way"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  },
+  {
+    "id": 2555153,
+    "path": "/ShutUp",
+    "answer": "Okay, I'm listening.",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "shut up"
+      },
+      {
+        "text": "shut the fuck up"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  },
+  {
+    "id": 2555562,
+    "path": "/Thanks",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "thank you"
+      },
+      {
+        "text": "nicely done"
+      },
+      {
+        "text": "that's great, thanks"
+      },
+      {
+        "text": "thanks"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  },
+  {
+    "id": 2555564,
+    "path": "/Yes",
+    "enabled": true,
+    "shared": false,
+    "phrases": [
+      {
+        "text": "yeah"
+      },
+      {
+        "text": "yes"
+      },
+      {
+        "text": "you do"
+      },
+      {
+        "text": "right"
+      }
+    ],
+    "patterns": [],
+    "priority": 0
+  }
+]

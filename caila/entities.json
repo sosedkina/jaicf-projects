@@ -1,0 +1,35 @@
+[
+  {
+    "entity": {
+      "name": "amount",
+      "type": "annotation",
+      "id": 78731,
+      "enabled": true,
+      "shared": false,
+      "priority": 1,
+      "noSpelling": true,
+      "noMorph": false,
+      "phoneticSearch": false,
+      "fuzzySearch": false,
+      "client": false
+    },
+    "records": [
+      {
+        "type": "pattern",
+        "rule": [
+          "@duckling.amount-of-money"
+        ],
+        "value": "",
+        "id": 4701132
+      },
+      {
+        "type": "pattern",
+        "rule": [
+          "@duckling.number (bucks/box)"
+        ],
+        "value": "",
+        "id": 4701133
+      }
+    ]
+  }
+]

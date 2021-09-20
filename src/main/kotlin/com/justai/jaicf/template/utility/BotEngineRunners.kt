@@ -1,4 +1,4 @@
-package com.justai.jaicf.template.extensions
+package com.justai.jaicf.template.utility
 
 import com.justai.jaicf.BotEngine
 import com.justai.jaicf.channel.jaicp.JaicpChannelFactory
@@ -6,7 +6,6 @@ import com.justai.jaicf.channel.jaicp.JaicpPollingConnector
 import com.justai.jaicf.channel.jaicp.JaicpServer
 import com.justai.jaicf.template.configuration.Configuration
 import com.justai.jaicf.template.configuration.ConnectionsConfiguration
-import io.ktor.client.features.logging.*
 
 fun BotEngine.run(vararg channels: JaicpChannelFactory) = when (Configuration.connection.mode) {
     ConnectionsConfiguration.ConnectionMode.polling -> {
