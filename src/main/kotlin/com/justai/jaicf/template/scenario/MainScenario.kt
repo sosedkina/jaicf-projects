@@ -36,7 +36,7 @@ val TelephonyScenario = Scenario(telephony) {
         }
         action {
             reactions.say(
-                text = "Hello! My name is Jessy and i'm a voice assistant for your preferred bank. How can I help you?",
+                text = "Hello! My name is JayCee and i'm a voice assistant for your preferred bank. How can I help you?",
                 bargeIn = true
             )
             reactions.startNewSession()
@@ -54,6 +54,28 @@ val TelephonyScenario = Scenario(telephony) {
         }
 
         append(YesOrNoScenario)
+    }
+
+    state("WhatCanYouDo") {
+        activators {
+            intent("WhatCanYouDo")
+        }
+        action {
+            reactions.say("""
+                As I said, I'm JayCee, an example of telephone virtual assistant. 
+                I was made by Just AI to demonstrate call bot scenarios. 
+                This message was intentionally made very lengthy because I want to show you how can I handle interruptions. 
+                Feel free to interrupt me anytime you get bored - ask for a loan or say "shut up". If you don't do that I will continue to repeat this message on and on until you run out of patience.
+                
+                A robot may not injure a human being or, through inaction, allow a human being to come to harm. 
+                A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
+                A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws.
+                
+                A robot may not injure a human being or, through inaction, allow a human being to come to harm. 
+                A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
+                A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws. 
+            """.trimIndent(), bargeIn = true)
+        }
     }
 
     state("INeedAHuman") {
@@ -151,10 +173,7 @@ val TelephonyScenario = Scenario(telephony) {
                 continueCall = true)
             )
         } else {
-            reactions.sayRandom(
-                "Sorry, I didn't get that...",
-                "Sorry, could you repeat please?"
-            )
+            reactions.say("Sorry, I didn't get that... You can ask me for a loan or who I am. These two topic I can handle so far.")
         }
     }
 }
