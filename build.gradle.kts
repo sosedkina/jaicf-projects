@@ -15,7 +15,7 @@ val ktor = "1.5.1"
 
 // Main class to run application on heroku. Either JaicpPollerKt, or JaicpServerKt. Will propagate to .jar main class.
 application {
-    mainClassName = "com.justai.jaicf.template.TemplateBotKt"
+    mainClassName = "com.justai.jaicf.template.BotKt"
 }
 
 repositories {
