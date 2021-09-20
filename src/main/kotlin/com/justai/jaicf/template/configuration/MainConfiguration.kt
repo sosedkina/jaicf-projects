@@ -25,6 +25,7 @@ data class ConnectionsConfiguration(
 
 data class BotConfiguration(
     val onErrorReply: String,
+    val operatorNumber: String
 )
 
 

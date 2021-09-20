@@ -62,7 +62,10 @@ val TelephonyScenario = Scenario(telephony) {
         }
         action {
             reactions.say("I'll redirect your call to our operator.")
-            reactions.transferCall(TelephonySwitchReply("+79818305614", continueCall = true, continueRecording = true))
+            reactions.transferCall(TelephonySwitchReply(
+                phoneNumber = Configuration.bot.operatorNumber,
+                continueCall = true,
+                continueRecording = true))
         }
     }
 
@@ -143,7 +146,10 @@ val TelephonyScenario = Scenario(telephony) {
         val sentiment = SentimentAnalyzer.findSentiment(request.input)
         if (sentiment != null && sentiment.intValue < 0) {
             reactions.say("I'll redirect your call to our operator.")
-            reactions.transferCall(TelephonySwitchReply("+79818305614", continueCall = true, continueRecording = true))
+            reactions.transferCall(TelephonySwitchReply(
+                phoneNumber = Configuration.bot.operatorNumber,
+                continueCall = true)
+            )
         } else {
             reactions.sayRandom(
                 "Sorry, I didn't get that...",

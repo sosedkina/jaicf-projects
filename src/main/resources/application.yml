@@ -1,9 +1,10 @@
 caila:
-  accessToken: ${JAICP_API_TOKEN}
+  accessToken: <PASTE YOUR JAICP API TOKEN>
 
 connection:
-  mode: webhook
-  accessToken: ${JAICP_API_TOKEN}
+  mode: polling
+  accessToken: <PASTE YOUR JAICP API TOKEN>
 
 bot:
-  onErrorReply: "Извините, у нас все сломалось"
+  onErrorReply: "Sorry, something's happened, I'll have to call you back later!"
+  operatorNumber: <SET YOUR OPERATOR NUMBER TO TRANSFER CALLS TO>
