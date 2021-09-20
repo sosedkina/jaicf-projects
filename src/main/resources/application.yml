@@ -4,6 +4,7 @@ caila:
 connection:
   mode: polling
   accessToken: <PASTE YOUR JAICP API TOKEN>
+  port: 10020
 
 bot:
   onErrorReply: "Sorry, something's happened, I'll have to call you back later!"

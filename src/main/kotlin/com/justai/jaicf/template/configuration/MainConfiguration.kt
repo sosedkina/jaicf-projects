@@ -19,6 +19,7 @@ data class MainConfiguration(
 data class ConnectionsConfiguration(
     val mode: ConnectionMode,
     val accessToken: String,
+    val port: Int
 ) {
     enum class ConnectionMode { polling, webhook }
 }
