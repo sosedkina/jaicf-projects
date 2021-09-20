@@ -76,4 +76,4 @@ fallback {
 2. Put your JAICP Access Token in `src/main/resources/application.yml`
 3. Import intents and entities from `caila` directory
 4. Create SIP Connection and Telephony Channel
-5. Run `TemplateBot.kt` file
+5. Run `Bot.kt` file

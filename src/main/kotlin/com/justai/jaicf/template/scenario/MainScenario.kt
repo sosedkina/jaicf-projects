@@ -101,6 +101,15 @@ val TelephonyScenario = Scenario(telephony) {
         }
     }
 
+    state("ShutUp") {
+        activators {
+            intent("ShutUp")
+        }
+        action {
+            reactions.say("Ok! I'm listening.")
+        }
+    }
+
     state("smalltalk", noContext = true) {
         activators {
             anyIntent()
