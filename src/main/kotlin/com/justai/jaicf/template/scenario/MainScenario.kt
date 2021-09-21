@@ -6,8 +6,11 @@ import com.justai.jaicf.channel.jaicp.channels.TelephonyEvents
 import com.justai.jaicf.channel.jaicp.dto.TelephonySwitchReply
 import com.justai.jaicf.channel.jaicp.dto.jaicpAnalytics
 import com.justai.jaicf.channel.jaicp.telephony
+import com.justai.jaicf.context.DefaultActionContext
 import com.justai.jaicf.helpers.logging.logger
 import com.justai.jaicf.hook.AnyErrorHook
+import com.justai.jaicf.logging.SayReaction
+import com.justai.jaicf.reactions.Reactions
 import com.justai.jaicf.template.configuration.Configuration
 import com.justai.jaicf.template.nlp.SentimentAnalyzer
 import io.ktor.util.*
@@ -43,18 +46,7 @@ val TelephonyScenario = Scenario(telephony) {
         }
     }
 
-    state("AskForLoan") {
-        activators {
-            intent("AskForLoan")
-        }
-        action(caila) {
-            val amount = activator.slots["amount"] as String
-            reactions.say("Okay! I will lend you $amount. Check your bank account in 5 minutes. Is there any other problem?")
-            jaicpAnalytics.setSessionResult("Loan given")
-        }
-
-        append(YesOrNoScenario)
-    }
+    append(LoanScenario)
 
     state("WhatCanYouDo") {
         activators {
@@ -185,4 +177,11 @@ val TelephonyScenario = Scenario(telephony) {
             reactions.say("Sorry, I didn't get that... You can ask me for a loan or who I am. These two topic I can handle so far.")
         }
     }
+}
+
+fun DefaultActionContext.giveLoan(currency: String, number: Int) {
+    jaicpAnalytics.setSessionResult("Loan given")
+    reactions.say("Okay! I will lend you $number$currency. Check your bank account in 5 minutes. Is there any other problem?")
+    context.session["loanCurrency"] = null
+    context.session["loanNumber"] = null
 }
