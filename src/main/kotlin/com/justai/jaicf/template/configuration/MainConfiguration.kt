@@ -11,7 +11,8 @@ private val ConfigurationLoader = ConfigLoader.Builder()
     .build()
 
 data class MainConfiguration(
-    val caila: CailaNLUSettings,
+    val goatcaila: CailaNLUSettings,
+    val cowcaila: CailaNLUSettings,
     val connection: ConnectionsConfiguration,
     val bot: BotConfiguration,
 )

@@ -60,6 +60,48 @@ val MainScenario = Scenario {
         }
     }
 
+    state("buyGoat", noContext = true) {
+        activators {
+            intent("wantToBuyAGoat")
+        }
+
+        action{
+            reactions.say(
+                "Суперски, давай подберем тебе козу по вкусу."
+            )
+
+            val entities = activator.caila?.entities
+            reactions.say(
+                entities.toString()
+            )
+
+            activator.caila?.topIntent?.answer?.let {
+                reactions.say(it)
+            }
+        }
+    }
+
+    state("rentCow", noContext = true) {
+        activators {
+            intent("wantToRentACow")
+        }
+
+        action{
+            reactions.say(
+                "Суперски, коровы для аренды у нас имеются."
+            )
+
+            val entities = activator.caila?.entities
+            reactions.say(
+                entities.toString()
+            )
+
+            activator.caila?.topIntent?.answer?.let {
+                reactions.say(it)
+            }
+        }
+    }
+
     fallback {
         reactions.sayRandom(
             "Sorry, I didn't get that...",

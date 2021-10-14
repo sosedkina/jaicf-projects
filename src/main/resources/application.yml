@@ -1,9 +1,12 @@
-caila:
-  accessToken: ${JAICP_API_TOKEN}
+goatcaila:
+  accessToken: 74671740-9947-4dad-ab63-67716a128554
+
+cowcaila:
+  accessToken: 5bd39860-fbc0-46f1-838a-2b19ad5b8724
 
 connection:
-  mode: webhook
-  accessToken: ${JAICP_API_TOKEN}
+  mode: polling
+  accessToken: 74671740-9947-4dad-ab63-67716a128554
 
 bot:
   onErrorReply: "Извините, у нас все сломалось"
