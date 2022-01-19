@@ -1,9 +1,10 @@
 caila:
-  accessToken: ${JAICP_API_TOKEN}
+  accessToken: 04a15534-d766-4113-976a-44f64517963c
+  confidenceThreshold: 0.3
 
 connection:
-  mode: webhook
-  accessToken: ${JAICP_API_TOKEN}
+  mode: polling
+  accessToken: 04a15534-d766-4113-976a-44f64517963c
 
 bot:
   onErrorReply: "Извините, у нас все сломалось"

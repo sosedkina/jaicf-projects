@@ -1,7 +1,7 @@
 caila:
-  accessToken: your api token
+  accessToken: ce35f8f1-dab9-4cec-a1e0-db20e05a9a78
   confidenceThreshold: 0.4
 
 connections:
   mode: polling
-  accessToken: your api token
+  accessToken: ce35f8f1-dab9-4cec-a1e0-db20e05a9a78
