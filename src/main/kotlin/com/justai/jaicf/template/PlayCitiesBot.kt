@@ -12,7 +12,7 @@ import com.justai.jaicf.template.configuration.Configuration
 import com.justai.jaicf.template.extensions.run
 import com.justai.jaicf.template.scenario.MainScenario
 
-val templateBot = BotEngine(
+val playCitiesBot = BotEngine(
     scenario = MainScenario,
     conversationLoggers = arrayOf(
         JaicpConversationLogger(Configuration.connection.accessToken),
@@ -25,5 +25,5 @@ val templateBot = BotEngine(
 )
 
 fun main() {
-    templateBot.run(ChatWidgetChannel, ChatApiChannel, TelephonyChannel)
+    playCitiesBot.run(ChatWidgetChannel, ChatApiChannel, TelephonyChannel)
 }
