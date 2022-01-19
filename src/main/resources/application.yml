@@ -1,10 +1,10 @@
 caila:
-  accessToken: 04a15534-d766-4113-976a-44f64517963c
+  accessToken: c5c638a4-60ec-49c1-83ae-2e2325ed00e4
   confidenceThreshold: 0.3
 
 connection:
   mode: polling
-  accessToken: 04a15534-d766-4113-976a-44f64517963c
+  accessToken: c5c638a4-60ec-49c1-83ae-2e2325ed00e4
 
 bot:
   onErrorReply: "Извините, у нас все сломалось"
