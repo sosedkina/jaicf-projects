@@ -24,10 +24,10 @@ val MainScenario = Scenario {
         }
         action {
             reactions.run {
-                image("https://media.giphy.com/media/ICOgUNjpvO0PC/source.gif")
+                image("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag-map_of_the_world_%282018%29.png/1209px-Flag-map_of_the_world_%282018%29.png")
                 sayRandom(
-                    "Hello! How can I help?",
-                    "Hi there! How can I help you?"
+                    "Привет! Давай поиграем? Я называю страну, а ты её столицу!",
+                    "Привет! Хочешь, я буду загадывать тебе страны, а ты угадывать столицы?"
                 )
                 buttons(
                     "Bitcoin price" toState "/getBitcoinPrice"
@@ -39,14 +39,15 @@ val MainScenario = Scenario {
     state("bye") {
         activators {
             intent("Bye")
+            intent("StopGame")
         }
 
         action {
             reactions.sayRandom(
-                "See you soon!",
-                "Bye-bye!"
+                "Жду тебя снова в игре!",
+                "Приходи поиграть еще!"
             )
-            reactions.image("https://media.giphy.com/media/EE185t7OeMbTy/source.gif")
+            reactions.image("https://kartinki.org/uploads/posts/2017-08/1503421241_2283-ya-zhdu-tebya-vozvraschaysya-pobystree.gif")
         }
     }
 
@@ -62,8 +63,8 @@ val MainScenario = Scenario {
 
     fallback {
         reactions.sayRandom(
-            "Sorry, I didn't get that...",
-            "Sorry, could you repeat please?"
+            "Прости, я тебя не понимаю.",
+            "Попробуй сказать иначе."
         )
     }
 }
