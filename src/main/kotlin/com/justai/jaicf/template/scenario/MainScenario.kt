@@ -1,6 +1,5 @@
 package com.justai.jaicf.template.scenario
 
-import com.justai.jaicf.activator.caila.caila
 import com.justai.jaicf.builder.Scenario
 import com.justai.jaicf.hook.AnyErrorHook
 import com.justai.jaicf.reactions.buttons
@@ -10,7 +9,7 @@ import io.ktor.util.*
 
 val MainScenario = Scenario {
 
-    append(ExampleBitcoinScenario)
+    append(MainGameScenario)
 
     handle<AnyErrorHook> {
         reactions.say(Configuration.bot.onErrorReply)

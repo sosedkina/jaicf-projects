@@ -9,7 +9,7 @@ data class BitcoinToUSD(val USD: Record) {
     data class Record(val buy: Double, val sell: Double)
 }
 
-val ExampleBitcoinScenario = Scenario {
+val MainGameScenario = Scenario {
     state("game") {
         action {
             reactions.say("Поехали!")
@@ -19,7 +19,8 @@ val ExampleBitcoinScenario = Scenario {
 
     state("giveCountry") {
         action {
-            reactions.say("Какой город является столицей Великобритании?")
+            var countryGiven = "Великобритания"
+            reactions.say("Какой город является столицей государства ${countryGiven}?")
         }
 
 
@@ -29,7 +30,8 @@ val ExampleBitcoinScenario = Scenario {
             }
 
             action {
-                reactions.say("Ты назвал город, это уже не плохо. Но я пока не знаю, правильный ли это ответ.")
+                var cityGiven = request.input.capitalize()
+                reactions.say("Если честно, я и сам не знаю, является ли $cityGiven столицей.")
                 reactions.go("/giveCountry")
             }
         }
