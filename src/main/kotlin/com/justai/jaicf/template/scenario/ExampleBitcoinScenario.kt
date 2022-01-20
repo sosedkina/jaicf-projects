@@ -10,12 +10,35 @@ data class BitcoinToUSD(val USD: Record) {
 }
 
 val ExampleBitcoinScenario = Scenario {
-    state("getBitcoinPrice") {
+    state("game") {
         action {
-            val data = runBlocking {
-                httpClient.get<BitcoinToUSD>("https://blockchain.info/ticker")
+            reactions.say("Поехали!")
+            reactions.go("/giveCountry")
+        }
+    }
+
+    state("giveCountry") {
+        action {
+            reactions.say("Какой город является столицей Великобритании?")
+        }
+
+
+        state("cityGiven") {
+            activators {
+                intent("City")
             }
-            reactions.say("You can buy BitCoin for ${data.USD.buy}$")
+
+            action {
+                reactions.say("Ты назвал город, это уже не плохо. Но я пока не знаю, правильный ли это ответ.")
+                reactions.go("/giveCountry")
+            }
+        }
+
+        fallback {
+            reactions.sayRandom(
+                "Я такого города не знаю."
+            )
+            reactions.go("/giveCountry")
         }
     }
 }

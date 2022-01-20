@@ -30,11 +30,12 @@ val MainScenario = Scenario {
                     "Привет! Хочешь, я буду загадывать тебе страны, а ты угадывать столицы?"
                 )
                 buttons(
-                    "Bitcoin price" toState "/getBitcoinPrice"
+                    "Начать игру" toState "/game"
                 )
             }
         }
     }
+
 
     state("bye") {
         activators {
@@ -48,16 +49,6 @@ val MainScenario = Scenario {
                 "Приходи поиграть еще!"
             )
             reactions.image("https://kartinki.org/uploads/posts/2017-08/1503421241_2283-ya-zhdu-tebya-vozvraschaysya-pobystree.gif")
-        }
-    }
-
-    state("smalltalk", noContext = true) {
-        activators {
-            anyIntent()
-        }
-
-        action(caila) {
-            activator.topIntent.answer?.let { reactions.say(it) } ?: reactions.go("/fallback")
         }
     }
 
